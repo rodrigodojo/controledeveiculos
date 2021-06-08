@@ -1,32 +1,29 @@
 package com.rodrigodojo.cdv.resources;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rodrigodojo.cdv.domain.Usuario;
+import com.rodrigodojo.cdv.services.UsuarioService;
 
 @RestController
 @RequestMapping(value="/usuarios")
 public class UserResource {
 	
+	@Autowired
+	private UsuarioService service;
 	
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public List<Usuario> listar() {
+	@RequestMapping(value="/{id}",method=RequestMethod.GET)
+	public ResponseEntity<?> find(@PathVariable Integer id) {
 		
-		Usuario users1 = new Usuario(1, "Rodrigo", "Rodrigodoj@gmail.com", "1234567899", 04/04/1989);
-		Usuario users2 = new Usuario(2, "jorge", "Rodrigodoj2@gmail.com", "1234567889", 04/04/1989);
+		Usuario obj = service.buscar(id);
+		return ResponseEntity.ok().body(obj);
+			
 		
-		List<Usuario> lista = new ArrayList<>();
-		lista.add(users1);
-		lista.add(users2);
-		
-		
-		return lista;
 	}
 
 }
