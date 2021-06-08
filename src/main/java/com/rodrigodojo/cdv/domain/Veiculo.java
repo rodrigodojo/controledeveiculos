@@ -14,7 +14,7 @@ public class Veiculo implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String marca;
 	private String modelo;
 	private Integer ano;
@@ -23,7 +23,7 @@ public class Veiculo implements Serializable{
 		
 	}
 
-	public Veiculo(int id, String marca, String modelo, Integer ano) {
+	public Veiculo(Integer id, String marca, String modelo, Integer ano) {
 		super();
 		this.id = id;
 		this.marca = marca;
@@ -31,11 +31,11 @@ public class Veiculo implements Serializable{
 		this.ano = ano;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
