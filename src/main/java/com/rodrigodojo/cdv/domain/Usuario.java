@@ -1,7 +1,6 @@
 package com.rodrigodojo.cdv.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Usuario implements Serializable{
 	
@@ -10,14 +9,14 @@ public class Usuario implements Serializable{
 	private int id;
 	private String nome;
 	private String email;
-	private Integer CPF;
-	private Date dataDeNascimento;
+	private String CPF;
+	private Integer dataDeNascimento;
 	
 	public Usuario() {
 		
 	}
 
-	public Usuario(int id, String nome, String email, Integer cPF, Date dataDeNascimento) {
+	public Usuario(int id, String nome, String email, String cPF, Integer dataDeNascimento) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -50,19 +49,19 @@ public class Usuario implements Serializable{
 		this.email = email;
 	}
 
-	public Integer getCPF() {
+	public String getCPF() {
 		return CPF;
 	}
 
-	public void setCPF(Integer cPF) {
+	public void setCPF(String cPF) {
 		CPF = cPF;
 	}
 
-	public Date getDataDeNascimento() {
+	public Integer getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 
-	public void setDataDeNascimento(Date dataDeNascimento) {
+	public void setDataDeNascimento(Integer dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
