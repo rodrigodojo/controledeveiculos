@@ -1,11 +1,14 @@
 package com.rodrigodojo.cdv.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Veiculo implements Serializable{
@@ -17,13 +20,16 @@ public class Veiculo implements Serializable{
 	private Integer id;
 	private String marca;
 	private String modelo;
-	private Integer ano;
+	private String ano;
+	
+	@ManyToMany(mappedBy = "veiculos")
+	private List<Usuario> usuarios = new ArrayList<>();
 	
 	public Veiculo() {
 		
 	}
 
-	public Veiculo(Integer id, String marca, String modelo, Integer ano) {
+	public Veiculo(Integer id, String marca, String modelo, String ano) {
 		super();
 		this.id = id;
 		this.marca = marca;
@@ -55,14 +61,22 @@ public class Veiculo implements Serializable{
 		this.modelo = modelo;
 	}
 
-	public Integer getAno() {
+	public String getAno() {
 		return ano;
 	}
 
-	public void setAno(Integer ano) {
+	public void setAno(String ano) {
 		this.ano = ano;
 	}
 
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -84,5 +98,5 @@ public class Veiculo implements Serializable{
 			return false;
 		return true;
 	}
-	
+
 }

@@ -1,11 +1,16 @@
 package com.rodrigodojo.cdv.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -20,6 +25,10 @@ public class Usuario implements Serializable{
 	private String email;
 	private String CPF;
 	private String dataDeNascimento;
+	
+	@ManyToMany
+	@JoinTable(name = "USUARIO_VEICULO", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "veiculo_id"))
+	private List<Veiculo> veiculos = new ArrayList<>();
 	
 	public Usuario() {
 		
@@ -73,7 +82,17 @@ public class Usuario implements Serializable{
 	public void setDataDeNascimento(String dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
+	
 
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -95,6 +114,5 @@ public class Usuario implements Serializable{
 			return false;
 		return true;
 	}
-	
 	
 }
