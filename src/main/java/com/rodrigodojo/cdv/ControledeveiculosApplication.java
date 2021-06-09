@@ -17,6 +17,7 @@ public class ControledeveiculosApplication implements CommandLineRunner {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	@Autowired
 	private VeiculoRepository veiculoRepository;
 
 	public static void main(String[] args) {
@@ -33,12 +34,12 @@ public class ControledeveiculosApplication implements CommandLineRunner {
 		Veiculo cars2 = new Veiculo(null, "Mitsubishi", "Lancer",  "2013");
 		Veiculo cars3 = new Veiculo(null, "Fiat", "Palio",  "2018");
 		
-		//users1.getVeiculos().addAll(Arrays.asList(cars1,cars2,cars3));
-		//users2.getVeiculos().addAll(Arrays.asList(cars3));
+		users1.getVeiculos().addAll(Arrays.asList(cars1,cars2,cars3));
+		users2.getVeiculos().addAll(Arrays.asList(cars3));
 		
-		//cars1.getUsuarios().addAll(Arrays.asList(users1));
-		//cars2.getUsuarios().addAll(Arrays.asList(users1));
-		//cars3.getUsuarios().addAll(Arrays.asList(users1,users2));
+		cars1.getUsuarios().addAll(Arrays.asList(users1));
+		cars2.getUsuarios().addAll(Arrays.asList(users1));
+		cars3.getUsuarios().addAll(Arrays.asList(users1,users2));
 		
 		usuarioRepository.saveAll(Arrays.asList(users1,users2));
 		veiculoRepository.saveAll(Arrays.asList(cars1,cars2,cars3));
