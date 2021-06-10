@@ -1,9 +1,10 @@
 package com.rodrigodojo.cdv.domain;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,9 +27,9 @@ public class Usuario implements Serializable{
 	private String CPF;
 	private String dataDeNascimento;
 	
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE })
 	@JoinTable(name = "USUARIO_VEICULO", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "veiculo_id"))
-	private Set<Veiculo> veiculos = new HashSet<>();
+	private List<Veiculo> veiculos = new ArrayList<>();
 	
 	public Usuario() {
 		
@@ -84,11 +85,11 @@ public class Usuario implements Serializable{
 	}
 	
 	
-	public Set<Veiculo> getVeiculos() {
+	public List<Veiculo> getVeiculos() {
 		return veiculos;
 	}
 
-	public void setVeiculos(Set<Veiculo> veiculos) {
+	public void setVeiculos(List<Veiculo> veiculos) {
 		this.veiculos = veiculos;
 	}
 

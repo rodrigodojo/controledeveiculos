@@ -14,7 +14,7 @@ public class VeiculoService {
 	@Autowired
 	private VeiculoRepository repo;
 	
-	public Veiculo buscar(Integer id){
+	public Veiculo find(Integer id){
 		Optional<Veiculo> obj = repo.findById(id);
 		return obj.orElse(null);		
 	}

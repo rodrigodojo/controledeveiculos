@@ -1,8 +1,8 @@
 package com.rodrigodojo.cdv.domain;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +23,7 @@ public class Veiculo implements Serializable{
 	private String ano;
 	
 	@ManyToMany(mappedBy = "veiculos")
-	private Set<Usuario> usuarios = new HashSet<>();
+	private List<Usuario> usuarios = new ArrayList<>();
 	
 	public Veiculo() {
 		
@@ -69,11 +69,11 @@ public class Veiculo implements Serializable{
 		this.ano = ano;
 	}
 
-	public Set<Usuario> getUsuarios() {
+	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(Set<Usuario> usuarios) {
+	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
 
