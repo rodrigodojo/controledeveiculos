@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.rodrigodojo.cdv.domain.Usuario;
 import com.rodrigodojo.cdv.repositories.UsuarioRepository;
+import com.rodrigodojo.cdv.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class UsuarioService {
@@ -16,6 +17,7 @@ public class UsuarioService {
 	
 	public Usuario find(Integer id){
 		Optional<Usuario> obj = repo.findById(id);
-		return obj.orElse(null);		
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Usuario.class.getName()));		
 	}
 }

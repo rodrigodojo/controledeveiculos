@@ -19,10 +19,8 @@ public class UserResource {
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
-		
 		Usuario obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
-			
 		
 	}
 
