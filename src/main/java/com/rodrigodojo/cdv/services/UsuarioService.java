@@ -40,5 +40,6 @@ public class UsuarioService {
 		entity.setEmail(obj.getEmail());
 		entity.setCPF(obj.getCPF());
 		entity.setDataDeNascimento(obj.getDataDeNascimento());
+		
 	}
 }
