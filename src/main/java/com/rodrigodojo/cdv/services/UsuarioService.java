@@ -27,6 +27,18 @@ public class UsuarioService {
 	
 	public void delete(Integer id) {
 		repo.deleteById(id);
-		
+	}
+	
+	public Usuario update(Integer id,Usuario obj) {
+		Usuario entity = repo.getOne(id);
+		updateData(entity,obj);
+		return repo.save(entity);
+	}
+
+	private void updateData(Usuario entity, Usuario obj) {
+		entity.setNome(obj.getNome());
+		entity.setEmail(obj.getEmail());
+		entity.setCPF(obj.getCPF());
+		entity.setDataDeNascimento(obj.getDataDeNascimento());
 	}
 }
