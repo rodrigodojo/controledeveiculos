@@ -24,4 +24,9 @@ public class UsuarioService {
 	public Usuario insert(Usuario obj) {
 		return repo.save(obj);
 	}
+	
+	public void delete(Integer id) {
+		repo.deleteById(id);
+		
+	}
 }

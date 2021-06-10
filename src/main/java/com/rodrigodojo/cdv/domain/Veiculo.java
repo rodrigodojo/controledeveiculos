@@ -23,6 +23,9 @@ public class Veiculo implements Serializable{
 	private String marca;
 	private String modelo;
 	private String ano;
+	private boolean rodizio = false;
+	private String dia = "00/00/00";
+	private String valor = "0";
 	
 	@JsonBackReference
 	@ManyToMany(mappedBy = "veiculos")
@@ -38,6 +41,30 @@ public class Veiculo implements Serializable{
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
+	}
+	
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
+
+	public boolean isRodizio() {
+		return rodizio;
+	}
+
+	public void setRodizio(boolean rodizio) {
+		this.rodizio = rodizio;
+	}
+
+	public String getDia() {
+		return dia;
+	}
+
+	public void setDia(String dia) {
+		this.dia = dia;
 	}
 
 	public Integer getId() {
