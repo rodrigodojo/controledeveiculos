@@ -19,5 +19,10 @@ public class VeiculoService {
 		return obj.orElse(null);		
 	}
 
+	public void situacaoRodizio(Integer id) {
+		Veiculo obj = repo.getOne(id);
+		//criar a funcao do rodizio
+		
+	}
 
 }
