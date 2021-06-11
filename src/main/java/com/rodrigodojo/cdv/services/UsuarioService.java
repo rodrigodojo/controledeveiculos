@@ -1,5 +1,6 @@
 package com.rodrigodojo.cdv.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ public class UsuarioService {
 	
 	@Autowired
 	private UsuarioRepository repo;
+	
+	public List<Usuario> findAll(){
+		return repo.findAll();
+	}
 	
 	public Usuario find(Integer id){
 		Optional<Usuario> obj = repo.findById(id);
