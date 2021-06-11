@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.rodrigodojo.cdv.domain.Veiculo;
 import com.rodrigodojo.cdv.repositories.VeiculoRepository;
@@ -70,5 +71,9 @@ public class VeiculoService {
 			obj.setRodizio(false);	
 		}
 	}
+	
+	// inicio da implementação da API da FIPE
+	RestTemplate restTemplate = new RestTemplate();
+	Veiculo consulta = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/anos/2014-3", Veiculo.class);
 
 }
