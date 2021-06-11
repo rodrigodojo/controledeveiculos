@@ -43,6 +43,7 @@ public class Veiculo implements Serializable{
 		this.ano = ano;
 	}
 	
+	
 	public String getValor() {
 		return valor;
 	}
@@ -51,7 +52,7 @@ public class Veiculo implements Serializable{
 		this.valor = valor;
 	}
 
-	public boolean isRodizio() {
+	public boolean getRodizio() {
 		return rodizio;
 	}
 
