@@ -55,18 +55,23 @@ public class VeiculoService {
 		temp = (obj.getAno().substring(3,3));
 		if(temp == "0" || temp == "1") {
 			obj.setRodizio(true);
+			obj.setDia("segunda-feira");
 
 		}else if(temp == "2" || temp == "3") {
 			obj.setRodizio(true);
+			obj.setDia("terça-feira");
 
 		}else if(temp == "4" || temp == "5") {
 			obj.setRodizio(true);
+			obj.setDia("quarta-feira");
 
 		}else if(temp == "6" || temp == "7") {
 			obj.setRodizio(true);
+			obj.setDia("quinta-feira");
 
 		}else if(temp == "8" || temp == "9") {
 			obj.setRodizio(true);
+			obj.setDia("sexta-feira");
 
 		}else {
 			obj.setRodizio(false);	

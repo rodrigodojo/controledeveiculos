@@ -81,7 +81,7 @@ public class Usuario implements Serializable{
 	}
 
 	public void setCPF(String cpf) {
-		cpf = cpf;
+		this.cpf = cpf;
 	}
 
 	public String getDataDeNascimento() {
