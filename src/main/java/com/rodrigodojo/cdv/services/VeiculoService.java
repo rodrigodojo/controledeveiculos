@@ -7,32 +7,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.rodrigodojo.cdv.domain.FIPE;
 import com.rodrigodojo.cdv.domain.Veiculo;
 import com.rodrigodojo.cdv.repositories.VeiculoRepository;
 
 @Service
 public class VeiculoService {
-	
+
 	@Autowired
 	private VeiculoRepository repo;
-	
+
 	public List<Veiculo> findAll(){
 		return repo.findAll();
 	}
-	
+
 	public Veiculo find(Integer id){
 		Optional<Veiculo> obj = repo.findById(id);
 		return obj.orElse(null);		
 	}
-	
+
 	public Veiculo insert(Veiculo obj) {
 		return repo.save(obj);
 	}
-	
+
 	public void delete(Integer id) {
 		repo.deleteById(id);
 	}
-	
+
 	public Veiculo update(Integer id,Veiculo obj) {
 		Veiculo entity = repo.getOne(id);
 		updateData(entity,obj);
@@ -44,7 +45,7 @@ public class VeiculoService {
 		entity.setModelo(obj.getModelo());
 		entity.setAno(obj.getAno());
 		entity.setRodizio(obj.getRodizio());
-		
+
 	}
 
 	//Separando a String do ano para descobrir qual a situaçao do ano a partir do ano do veiculo.
@@ -54,26 +55,45 @@ public class VeiculoService {
 		temp = (obj.getAno().substring(3,3));
 		if(temp == "0" || temp == "1") {
 			obj.setRodizio(true);
-			
+
 		}else if(temp == "2" || temp == "3") {
 			obj.setRodizio(true);
-			
+
 		}else if(temp == "4" || temp == "5") {
 			obj.setRodizio(true);
-			
+
 		}else if(temp == "6" || temp == "7") {
 			obj.setRodizio(true);
-			
+
 		}else if(temp == "8" || temp == "9") {
 			obj.setRodizio(true);
-			
+
 		}else {
 			obj.setRodizio(false);	
 		}
 	}
-	
-	// inicio da implementação da API da FIPE
-	RestTemplate restTemplate = new RestTemplate();
-	Veiculo consulta = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/anos/2014-3", Veiculo.class);
+
+	public void valorVeiculo(Integer id){
+		Veiculo obj = repo.getOne(id);
+		int cont =0;
+		Integer marca=0;
+		String temp;
+		
+		RestTemplate restTemplate = new RestTemplate();
+		FIPE objTemp = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas",FIPE.class);
+		
+		do {
+			if(objTemp.getMarca().equals(obj.getMarca())) {
+				temp = obj.getMarca();
+				marca =Integer.parseInt(temp);
+				cont+=1;
+			}else {
+				cont=0;
+			}
+		}while(cont != 1);
+		
+		
+		Veiculo consulta = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca+"/modelos/5940/anos/"+obj.getAno(), Veiculo.class);
+	}
 
 }

@@ -26,6 +26,13 @@ public class Veiculo implements Serializable{
 	private boolean rodizio = false;
 	private String dia = "00/00/00";
 	private String valor = "0";
+	private String combustivel;
+	private String codigoFipe;
+	private String mesReferencia;
+	private int tipoVeiculo;
+	private String siglaCombustivel;
+	
+	
 	
 	@JsonBackReference
 	@ManyToMany(mappedBy = "veiculos")
@@ -44,6 +51,47 @@ public class Veiculo implements Serializable{
 	}
 	
 	
+	
+	public String getCombustivel() {
+		return combustivel;
+	}
+
+	public void setCombustivel(String combustivel) {
+		this.combustivel = combustivel;
+	}
+
+	public String getCodigoFipe() {
+		return codigoFipe;
+	}
+
+	public void setCodigoFipe(String codigoFipe) {
+		this.codigoFipe = codigoFipe;
+	}
+
+	public String getMesReferencia() {
+		return mesReferencia;
+	}
+
+	public void setMesReferencia(String mesReferencia) {
+		this.mesReferencia = mesReferencia;
+	}
+
+	public int getTipoVeiculo() {
+		return tipoVeiculo;
+	}
+
+	public void setTipoVeiculo(int tipoVeiculo) {
+		this.tipoVeiculo = tipoVeiculo;
+	}
+
+	public String getSiglaCombustivel() {
+		return siglaCombustivel;
+	}
+
+	public void setSiglaCombustivel(String siglaCombustivel) {
+		this.siglaCombustivel = siglaCombustivel;
+	}
+
 	public String getValor() {
 		return valor;
 	}
