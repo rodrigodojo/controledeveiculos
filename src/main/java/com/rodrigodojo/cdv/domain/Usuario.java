@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
@@ -29,6 +30,7 @@ public class Usuario implements Serializable{
 	private String CPF;
 	private String dataDeNascimento;
 	
+	@JsonIgnore
 	@JsonManagedReference
 	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE })
 	@JoinTable(name = "USUARIO_VEICULO", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "veiculo_id"))

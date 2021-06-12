@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Veiculo implements Serializable{
@@ -33,7 +34,7 @@ public class Veiculo implements Serializable{
 	private String siglaCombustivel;
 	
 	
-	
+	@JsonIgnore
 	@JsonBackReference
 	@ManyToMany(mappedBy = "veiculos")
 	private List<Usuario> usuarios = new ArrayList<>();

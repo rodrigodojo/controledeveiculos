@@ -27,22 +27,22 @@ public class ControledeveiculosApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Usuario users1 = new Usuario(null, "Rodrigo", "Rodrigodoj@gmail.com", "046.087.814.05", "040489");
-		Usuario users2 = new Usuario(null, "Jorge", "Jorge@gmail.com", "000.000.814.05", "010489");
+		//Usuario users1 = new Usuario(null, "Rodrigo", "Rodrigodoj@gmail.com", "046.087.814.05", "040489");
+		//Usuario users2 = new Usuario(null, "Jorge", "Jorge@gmail.com", "000.000.814.05", "010489");
 		
-		Veiculo cars1 = new Veiculo(null, "Ford", "Escort", "2002");
-		Veiculo cars2 = new Veiculo(null, "Mitsubishi", "Lancer",  "2013");
-		Veiculo cars3 = new Veiculo(null, "Fiat", "Palio",  "2018");
+		//Veiculo cars1 = new Veiculo(null, "Ford", "Escort", "2002");
+		//Veiculo cars2 = new Veiculo(null, "Mitsubishi", "Lancer",  "2013");
+		//Veiculo cars3 = new Veiculo(null, "Fiat", "Palio",  "2018");
 		
-		users1.getVeiculos().addAll(Arrays.asList(cars1,cars2,cars3));
-		users2.getVeiculos().addAll(Arrays.asList(cars3));
+		//users1.getVeiculos().addAll(Arrays.asList(cars1,cars2,cars3));
+		//users2.getVeiculos().addAll(Arrays.asList(cars3));
 		
-		cars1.getUsuarios().addAll(Arrays.asList(users1));
-		cars2.getUsuarios().addAll(Arrays.asList(users1));
-		cars3.getUsuarios().addAll(Arrays.asList(users1,users2));
+		//cars1.getUsuarios().addAll(Arrays.asList(users1));
+		//cars2.getUsuarios().addAll(Arrays.asList(users1));
+		//cars3.getUsuarios().addAll(Arrays.asList(users1,users2));
 		
-		usuarioRepository.saveAll(Arrays.asList(users1,users2));
-		veiculoRepository.saveAll(Arrays.asList(cars1,cars2,cars3));
+		//usuarioRepository.saveAll(Arrays.asList(users1,users2));
+		//veiculoRepository.saveAll(Arrays.asList(cars1,cars2,cars3));
 		
 	}
 	
