@@ -27,7 +27,7 @@ public class Usuario implements Serializable{
 	private Integer id;
 	private String nome;
 	private String email;
-	private String CPF;
+	private String cpf;
 	private String dataDeNascimento;
 	
 	@JsonIgnore
@@ -40,12 +40,12 @@ public class Usuario implements Serializable{
 		
 	}
 
-	public Usuario(Integer id, String nome, String email, String cPF, String dataDeNascimento) {
+	public Usuario(Integer id, String nome, String email, String cpf, String dataDeNascimento) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.CPF = cPF;
+		this.cpf = cpf;
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
@@ -74,11 +74,11 @@ public class Usuario implements Serializable{
 	}
 
 	public String getCPF() {
-		return CPF;
+		return cpf;
 	}
 
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCPF(String cpf) {
+		cpf = cpf;
 	}
 
 	public String getDataDeNascimento() {
