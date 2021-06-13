@@ -35,7 +35,7 @@ public class Usuario implements Serializable{
 	
 	@JsonIgnore
 	@JsonManagedReference
-	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE })
+	@ManyToMany(cascade = {CascadeType.PERSIST })
 	@JoinTable(name = "USUARIO_VEICULO", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "veiculo_id"))
 	private List<Veiculo> veiculos = new ArrayList<>();
 	
