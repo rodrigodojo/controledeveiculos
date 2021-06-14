@@ -34,7 +34,7 @@ public class Veiculo implements Serializable{
 	private String siglaCombustivel;
 	
 	
-	@JsonIgnore
+	
 	@JsonBackReference
 	@ManyToMany(mappedBy = "veiculos")
 	private List<Usuario> usuarios = new ArrayList<>();
