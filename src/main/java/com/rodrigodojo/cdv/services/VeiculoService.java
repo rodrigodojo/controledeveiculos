@@ -27,6 +27,7 @@ public class VeiculoService {
 	}
 
 	public Veiculo insert(Veiculo obj) {
+		situacaoRodizioMelhor(obj);
 		return repo.save(obj);
 	}
 
@@ -47,12 +48,10 @@ public class VeiculoService {
 		entity.setRodizio(obj.getRodizio());
 
 	}
-
-	//Separando a String do ano para descobrir qual a situaçao do ano a partir do ano do veiculo.
-	public void situacaoRodizio(Integer id) {
-		Veiculo obj = repo.getOne(id);
-		String temp;
-		temp = (obj.getAno().substring(3,3));
+	
+	public void situacaoRodizioMelhor(Veiculo obj) {
+		String temp = "";
+		temp = (obj.getAno().substring(2,4));
 		if(temp == "0" || temp == "1") {
 			obj.setRodizio(true);
 			obj.setDia("segunda-feira");
@@ -74,15 +73,16 @@ public class VeiculoService {
 			obj.setDia("sexta-feira");
 
 		}else {
-			obj.setRodizio(false);	
+			obj.setDia("Final de semana");
+			obj.setRodizio(true);	
 		}
 	}
-
+	
 	public void valorVeiculo(Integer id){
 		Veiculo obj = repo.getOne(id);
 		int cont =0;
 		Integer marca=0;
-		String temp;
+		String temp="";
 		
 		RestTemplate restTemplate = new RestTemplate();
 		FIPE objTemp = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas",FIPE.class);
