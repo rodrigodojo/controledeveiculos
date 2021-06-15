@@ -51,7 +51,7 @@ public class VeiculoService {
 	
 	public void situacaoRodizioMelhor(Veiculo obj) {
 		String temp = "";
-		temp = (obj.getAno().substring(2,4));
+		temp = (obj.getAno().substring(3,4));
 		if(temp == "0" || temp == "1") {
 			obj.setRodizio(true);
 			obj.setDia("segunda-feira");
@@ -73,8 +73,8 @@ public class VeiculoService {
 			obj.setDia("sexta-feira");
 
 		}else {
-			obj.setDia("Final de semana");
-			obj.setRodizio(true);	
+			obj.setDia("Rodizio não autorizado");
+			obj.setRodizio(false);	
 		}
 	}
 	
