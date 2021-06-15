@@ -13,12 +13,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"email","cpf"})})
 public class Usuario implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -27,9 +30,9 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	@Column(unique = true)
+	//@Column(unique = true)
 	private String email;
-    @Column(unique = true)
+    //@Column(unique = true)
 	private String cpf;
 	private String dataDeNascimento;
 	
