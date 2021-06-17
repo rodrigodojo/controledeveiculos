@@ -100,30 +100,31 @@ public class VeiculoService {
 		}while(cont != 1);
 		
 		
-		Veiculo consulta = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca+"/modelos/5940/anos/"+obj.getAno(), Veiculo.class);
+		//Veiculo consulta = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca+"/modelos/5940/anos/"+obj.getAno(), Veiculo.class);
 	}
 	
 	public void valorVeiculoMelhor(Integer id){
+		RestTemplate restTemplate = new RestTemplate();
 		Veiculo obj = repo.getOne(id);
 		int cont =0;
 		Integer marca=0;
-		String temp="";
 		
 		UriComponents uri = UriComponentsBuilder.newInstance().scheme("https").host("parallelum.com.br").path("fipe/api/v1").queryParam("marcas","carros").build();
 		
-		RestTemplate restTemplate = new RestTemplate();
 		FIPE objTemp = restTemplate.getForObject(uri.toUriString(),FIPE.class);
 		
 		do {
 			if(objTemp.getMarca().equals(obj.getMarca())) {
-				temp = obj.getMarca();
-				marca =Integer.parseInt(temp);
+				marca =Integer.parseInt(obj.getMarca());
 				cont+=1;
 			}else {
 				cont=0;
 			}
-		}while(cont != 1);
+		}while(cont == 0);
 		
+		
+		obj = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca.toString()+"/"+obj.getModelo().toString()+"/5940/anos/"+obj.getAno().toString(), Veiculo.class);
+		insert(obj);
 		
 	}
 
