@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.rodrigodojo.cdv.domain.FIPE;
 import com.rodrigodojo.cdv.domain.Veiculo;
@@ -99,6 +101,30 @@ public class VeiculoService {
 		
 		
 		Veiculo consulta = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca+"/modelos/5940/anos/"+obj.getAno(), Veiculo.class);
+	}
+	
+	public void valorVeiculoMelhor(Integer id){
+		Veiculo obj = repo.getOne(id);
+		int cont =0;
+		Integer marca=0;
+		String temp="";
+		
+		UriComponents uri = UriComponentsBuilder.newInstance().scheme("https").host("parallelum.com.br").path("fipe/api/v1").queryParam("marcas","carros").build();
+		
+		RestTemplate restTemplate = new RestTemplate();
+		FIPE objTemp = restTemplate.getForObject(uri.toUriString(),FIPE.class);
+		
+		do {
+			if(objTemp.getMarca().equals(obj.getMarca())) {
+				temp = obj.getMarca();
+				marca =Integer.parseInt(temp);
+				cont+=1;
+			}else {
+				cont=0;
+			}
+		}while(cont != 1);
+		
+		
 	}
 
 }
