@@ -30,6 +30,7 @@ public class VeiculoService {
 
 	public Veiculo insert(Veiculo obj) {
 		situacaoRodizioMelhor(obj);
+		//obj = valorVeiculoMelhor(obj.getId());
 		return repo.save(obj);
 	}
 
@@ -57,23 +58,18 @@ public class VeiculoService {
 		if(temp == "0" || temp == "1") {
 			obj.setRodizio(true);
 			obj.setDia("segunda-feira");
-
 		}else if(temp == "2" || temp == "3") {
 			obj.setRodizio(true);
 			obj.setDia("terça-feira");
-
 		}else if(temp == "4" || temp == "5") {
 			obj.setRodizio(true);
 			obj.setDia("quarta-feira");
-
 		}else if(temp == "6" || temp == "7") {
 			obj.setRodizio(true);
 			obj.setDia("quinta-feira");
-
 		}else if(temp == "8" || temp == "9") {
 			obj.setRodizio(true);
 			obj.setDia("sexta-feira");
-
 		}else {
 			obj.setDia("Rodizio não autorizado");
 			obj.setRodizio(false);	
@@ -103,7 +99,7 @@ public class VeiculoService {
 		//Veiculo consulta = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca+"/modelos/5940/anos/"+obj.getAno(), Veiculo.class);
 	}
 	
-	public void valorVeiculoMelhor(Integer id){
+	public Veiculo valorVeiculoMelhor(Integer id){
 		RestTemplate restTemplate = new RestTemplate();
 		Veiculo obj = repo.getOne(id);
 		int cont =0;
@@ -123,8 +119,7 @@ public class VeiculoService {
 		}while(cont == 0);
 		
 		
-		obj = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca.toString()+"/"+obj.getModelo().toString()+"/5940/anos/"+obj.getAno().toString(), Veiculo.class);
-		insert(obj);
+		 return obj = restTemplate.getForObject("https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca.toString()+"/"+obj.getModelo().toString()+"/5940/anos/"+obj.getAno().toString(), Veiculo.class);
 		
 	}
 

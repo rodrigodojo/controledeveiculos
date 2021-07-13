@@ -44,7 +44,6 @@ public class VeiculoResource {
 	@PostMapping
 	public ResponseEntity<Veiculo> insert(@RequestBody Veiculo obj){
 		obj = service.insert(obj);
-		//service.valorVeiculo(obj.getId());
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
